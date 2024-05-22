@@ -1,0 +1,83 @@
+﻿$User = "admin@m365x55850662.onmicrosoft.com"
+$PWord = ConvertTo-SecureString -String "j7^j;9g^5p^DW5ZD" -AsPlainText -Force
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
+$path = $args[0]
+$fileName = $args[1]
+
+
+# Import-Module /var/projects/test/intune-reporting/poc/ps-scripts/exchange-online/3.5/ExchangeOnlineManagement.psd1 -Force
+
+# Connect-ExchangeOnline -AccessToken $AccessToken -UserPrincipalName $UserPrincipalName -ErrorAction Stop | Out-Null
+
+Update-M365DSCAllowedGraphScopes -All -Type 'Update' -Environment 'Global'
+Export-M365DSCConfiguration -Credential $Credential -Path $path -FileName $fileName -Components @(
+     "IntuneAccountProtectionLocalAdministratorPasswordSolutionPolicy",
+    "IntuneAccountProtectionLocalUserGroupMembershipPolicy",
+    "IntuneAccountProtectionPolicy",
+    "IntuneAntivirusPolicyWindows10SettingCatalog",
+    "IntuneAppConfigurationPolicy",
+    "IntuneApplicationControlPolicyWindows10",
+    "IntuneAppProtectionPolicyAndroid",
+    "IntuneAppProtectionPolicyiOS",
+    "IntuneASRRulesPolicyWindows10",
+    "IntuneAttackSurfaceReductionRulesPolicyWindows10ConfigManager",
+    "IntuneDeviceAndAppManagementAssignmentFilter",
+    "IntuneDeviceCategory",
+    "IntuneDeviceCleanupRule",
+    "IntuneDeviceCompliancePolicyAndroid",
+    "IntuneDeviceCompliancePolicyAndroidDeviceOwner",
+    "IntuneDeviceCompliancePolicyAndroidWorkProfile",
+    "IntuneDeviceCompliancePolicyiOs",
+    "IntuneDeviceCompliancePolicyMacOS",
+    "IntuneDeviceCompliancePolicyWindows10",
+    "IntuneDeviceConfigurationAdministrativeTemplatePolicyWindows10",
+    "IntuneDeviceConfigurationCustomPolicyWindows10",
+    "IntuneDeviceConfigurationDefenderForEndpointOnboardingPolicyWindows10",
+    "IntuneDeviceConfigurationDeliveryOptimizationPolicyWindows10",
+    "IntuneDeviceConfigurationDomainJoinPolicyWindows10",
+    "IntuneDeviceConfigurationEmailProfilePolicyWindows10",
+    "IntuneDeviceConfigurationEndpointProtectionPolicyWindows10",
+    "IntuneDeviceConfigurationFirmwareInterfacePolicyWindows10",
+    "IntuneDeviceConfigurationHealthMonitoringConfigurationPolicyWindows10",
+    "IntuneDeviceConfigurationIdentityProtectionPolicyWindows10",
+    "IntuneDeviceConfigurationImportedPfxCertificatePolicyWindows10",
+    "IntuneDeviceConfigurationKioskPolicyWindows10",
+    "IntuneDeviceConfigurationNetworkBoundaryPolicyWindows10",
+    "IntuneDeviceConfigurationPkcsCertificatePolicyWindows10",
+    "IntuneDeviceConfigurationPolicyAndroidDeviceAdministrator",
+    "IntuneDeviceConfigurationPolicyAndroidDeviceOwner",
+    "IntuneDeviceConfigurationPolicyAndroidOpenSourceProject",
+    "IntuneDeviceConfigurationPolicyAndroidWorkProfile",
+    "IntuneDeviceConfigurationPolicyiOS",
+    "IntuneDeviceConfigurationPolicyMacOS",
+    "IntuneDeviceConfigurationPolicyWindows10",
+    "IntuneDeviceConfigurationSCEPCertificatePolicyWindows10",
+    "IntuneDeviceConfigurationSecureAssessmentPolicyWindows10",
+    "IntuneDeviceConfigurationSharedMultiDevicePolicyWindows10",
+    "IntuneDeviceConfigurationTrustedCertificatePolicyWindows10",
+    "IntuneDeviceConfigurationVpnPolicyWindows10",
+    "IntuneDeviceConfigurationWindowsTeamPolicyWindows10",
+    "IntuneDeviceEnrollmentLimitRestriction",
+    "IntuneDeviceEnrollmentPlatformRestriction",
+    "IntuneDeviceEnrollmentStatusPageWindows10",
+    "IntuneEndpointDetectionAndResponsePolicyWindows10",
+    "IntuneExploitProtectionPolicyWindows10SettingCatalog",
+    "IntunePolicySets",
+    "IntuneRoleAssignment",
+    "IntuneRoleDefinition",
+    "IntuneSettingCatalogASRRulesPolicyWindows10",
+    "IntuneSettingCatalogCustomPolicyWindows10",
+    "IntuneWifiConfigurationPolicyAndroidDeviceAdministrator",
+    "IntuneWifiConfigurationPolicyAndroidEnterpriseDeviceOwner",
+    "IntuneWifiConfigurationPolicyAndroidEnterpriseWorkProfile",
+    "IntuneWifiConfigurationPolicyAndroidForWork",
+    "IntuneWifiConfigurationPolicyAndroidOpenSourceProject",
+    "IntuneWifiConfigurationPolicyIOS",
+    "IntuneWifiConfigurationPolicyMacOS",
+    "IntuneWifiConfigurationPolicyWindows10",
+    "IntuneWindowsAutopilotDeploymentProfileAzureADHybridJoined",
+    "IntuneWindowsAutopilotDeploymentProfileAzureADJoined",
+    "IntuneWindowsInformationProtectionPolicyWindows10MdmEnrolled",
+    "IntuneWindowsUpdateForBusinessFeatureUpdateProfileWindows10",
+    "IntuneWindowsUpdateForBusinessRingUpdateProfileWindows10"
+)

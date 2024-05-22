@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <style>
+      body { margin: 0; font-family: Arial, sans-serif; background-color:
+      #1f2d3d; color: #fff; } .sidebar { width: 250px; height: 100vh;
+      background-color: #26343f; padding: 20px; position: fixed; display: flex;
+      flex-direction: column; justify-content: space-between; } .sidebar ul {
+      list-style: none; padding: 0; } .sidebar li { margin: 20px 0; display:
+      flex; align-items: center; } .sidebar li a { color: #fff; text-decoration:
+      none; font-size: 18px; } .main-content { margin-left: 270px; padding:
+      20px; } .terminal-container { margin: 20px; padding: 20px;
+      background-color: #34495e; border-radius: 10px; } .terminal-title {
+      font-size: 24px; margin-bottom: 10px; } .terminal { background-color:
+      #000; color: #0f0; padding: 20px; border-radius: 10px; height: 60vh;
+      overflow-y: auto; font-family: monospace; } .button-container { display:
+      flex; justify-content: center; margin-top: 20px; } .button-container
+      button { background-color: #27ae60; border: none; color: white; padding:
+      10px 20px; border-radius: 5px; cursor: pointer; margin: 0 10px; }
+      .greeting { position: absolute; top: 20px; right: 20px; font-size: 18px; }
+      /* Additional menu style */ .additional-menu { display: flex;
+      flex-direction: column; align-items: flex-start; } .additional-menu li {
+      margin-top: auto; } .additional-menu { display: flex; flex-direction:
+      column; align-items: flex-start; margin-bottom: 100px; /* Adjust this
+      value for the desired padding */ } .sidebar li a.active { font-weight:
+      bold; color: #27ae60; }
+    </style>
+  </head>
+  <body>
+    <div class="greeting">Hello, {{username}}!</div>
+    <div class="sidebar">
+      <ul>
+        {{#each sidebarItems}}
+          <li><a
+              href="{{this.href}}"
+              class="sidebar-link"
+            >{{this.name}}</a></li>
+        {{/each}}
+      </ul>
+      <!-- Additional menu -->
+      <ul class="additional-menu">
+        <!-- Logout -->
+        <li><a href="#"><i class="fas fa-sign-out-alt"></i>Support</a></li>
+        <!-- Settings -->
+        <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
+        <!-- Support -->
+        <li><a href="auth/logout"><i
+              class="fas fa-life-ring"
+            ></i>Logout</a></li>
+        <!-- Add more items as needed -->
+      </ul>
+    </div>
+    <script src="javascripts/activeLinkScript.js"></script>
+  </body>
+</html>
